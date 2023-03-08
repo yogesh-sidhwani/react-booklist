@@ -1,0 +1,22 @@
+th {
+  font-weight: bold;
+}
+
+h2 {
+  display: inline-flex;
+    width: 80%;
+    margin-left: 20px;
+}
+
+.MuiTextField-root{
+  height: 50px;
+  margin: 20px !important;
+}
+
+.MuiInputLabel-root {
+  top: -7px !important;
+}
+
+button:disabled {
+  background-color: lightgray;
+}
