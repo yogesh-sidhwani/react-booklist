@@ -19,12 +19,13 @@ function Cart({ cart, setCart }) {
   if (redirectToBookDisplay) {
     return <Redirect to="/books" />;
   }
-
+let total = 0;
   return (
     <div>
       <h2>Cart</h2>
       <ul>
         {cart.map((book) => (
+         
           <li key={book.id}>
             {book.bookName} by {book.authorName}
             <button onClick={() => handleRemoveFromCart(book)}>

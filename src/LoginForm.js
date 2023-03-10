@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import "./LoginForm.css";
+import axios from "axios";
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -10,12 +11,29 @@ function LoginForm() {
   function handleSubmit(event) {
     event.preventDefault();
     // Send a POST request to your backend API to verify the credentials
+const postdata = {
+
+  "email": username,
+  "password": password
+}
+    axios.post("http://localhost:8080/users/admin/signin", postdata)
+    .then((res)=>{
+      console.log("sucess");
+      console.log(res.data);
+    })
+    .catch((error)=>{
+      console.log("error")
+    });
+
+    
+
+    
 
     // Assuming the backend returns a token on successful login
-    const token = "exampleToken";
+   // const token = "exampleToken";
 
     // Store the token in localStorage or some other storage mechanism
-    localStorage.setItem("token", token);
+   // localStorage.setItem("token", token);
 
     // Set redirectToBookDisplay to true to trigger the redirect
     setRedirectToBookDisplay(true);
@@ -23,7 +41,7 @@ function LoginForm() {
 
   // If redirectToBookDisplay is true, redirect to the BookDisplay page
   if (redirectToBookDisplay) {
-    return <Redirect to="/books" />;
+    return <Redirect to="/books"/>;
   }
 
   return (

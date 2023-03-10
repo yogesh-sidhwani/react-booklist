@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import {
   Table,
   TableBody,
@@ -20,34 +21,41 @@ function BookDisplay({ cart, setCart }) {
   useEffect(() => {
     // Replace the url by get all API
 
-    // fetch("/api/books")
-    //   .then((response) => response.json())
-    //   .then((data) => setBooks(data))
-    //   .catch((error) => console.log(error));
+    fetch("http://localhost:8080/book/getAllBooks/1")
+      .then((response) => response.json())
+      .then((data) => setBooks(data))
+      .catch((error) => console.log(error));
+   //   axios.get("http://localhost:7070/book/getAllTheBooks")
+      // .then((res)=>{
+      //   console.log(res)
+      // }).error((err)=>{
+      //   console.log(err)
+      // })
+
 
     // remove the mock data
-    const books = [
-      {
-        id: 1,
-        bookName: "Harry Potter",
-        noOfBooks: 5,
-        description: "Goblet of fire",
-        price: 19.99,
-        authorName: "JK Rowling",
-        inStock: true,
-        image: "book_image",
-      },
-      {
-        id: 2,
-        bookName: "Scary Potter",
-        noOfBooks: 5,
-        description: "Goblet of fire",
-        price: 19.99,
-        authorName: "JK Rowling",
-        inStock: true,
-        image: "book_image",
-      },
-    ];
+    // const books = [
+    //   {
+    //     id: 1,
+    //     bookName: "Harry Potter",
+    //     noOfBooks: 5,
+    //     description: "Goblet of fire",
+    //     price: 19.99,
+    //     authorName: "JK Rowling",
+    //     inStock: true,
+    //     image: "book_image",
+    //   },
+    //   {
+    //     id: 2,
+    //     bookName: "Scary Potter",
+    //     noOfBooks: 5,
+    //     description: "Goblet of fire",
+    //     price: 19.99,
+    //     authorName: "JK Rowling",
+    //     inStock: true,
+    //     image: "book_image",
+    //   },
+    // ];
 
     setBooks(books);
   }, []);
