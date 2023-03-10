@@ -1,7 +1,7 @@
 ul {
   border: 1px solid black;
   border-radius: 10px;
-  width: 90%;
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -10,7 +10,7 @@ li {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #32393b;
   width: 90%;
   margin: 10px auto;
 }

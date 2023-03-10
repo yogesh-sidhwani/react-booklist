@@ -1,14 +1,22 @@
 th {
-  font-weight: bold;
+  font-weight: bold !important;
+}
+
+td {
+  font-size: 16px !important;
 }
 
 h2 {
   display: inline-flex;
-    width: 75%;
-    margin-left: 20px;
+  width: 100%;
+  justify-content: center;
 }
 
-.MuiTextField-root{
+h2.book-heading {
+  width: 75%;
+}
+
+.MuiTextField-root {
   height: 50px;
   margin: 20px !important;
 }

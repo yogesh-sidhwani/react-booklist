@@ -9,12 +9,14 @@ label {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 input[type="text"],
 input[type="password"],
   input[type="tel"],
-  input[type="email"] {
+  input[type="email"],
+  select {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -43,9 +45,11 @@ button[type="submit"]:hover {
 .span-link {
   color: #dc3545;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .error-message{
   color: #dc3545;
   font-size: 12px;
+  background-color: #afbfc4;
 }

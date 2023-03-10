@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import "./LoginForm.css";
 import axios from "axios";
+import SelectComponent from './SelectComponent';
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -19,6 +20,15 @@ function LoginForm() {
   const [errorMessage, setErrorMessage] = useState("");
   const [signupError, setSignupError] = useState("");
   const [redirectToBookDisplay, setRedirectToBookDisplay] = useState(false);
+
+  const handleSelect = (option) => {
+    setuserRole(option);
+  }
+
+  const options = [
+    { value: 'CUSTOMER', label: 'Customer' },
+    { value: 'ADMIN', label: 'Admin' },
+  ];
 
   const handleLogin = (event) =>{
     event.preventDefault();
@@ -44,10 +54,11 @@ function LoginForm() {
   const handleSignup = (event) => {
     event.preventDefault();
     // Send a POST request to your backend API to register
+    const user = userRole ? userRole :setuserRole(options[0]);
     const postdata = {
       firstName,
       lastName,
-      userRole,
+      userRole: userRole ? userRole.value : options[0].value,
       email: username,
       password,
       address,
@@ -66,7 +77,6 @@ function LoginForm() {
         setSignupError("Please check your information and try again.")
       });
   };
-
 
   // If redirectToBookDisplay is true, redirect to the BookDisplay page
   if (redirectToBookDisplay) {
@@ -99,11 +109,7 @@ function LoginForm() {
             <br />
             <label>
               UserRole:
-              <input
-                type="text"
-                value={userRole}
-                onChange={(e) => setuserRole(e.target.value)}
-              />
+              <SelectComponent options={options} onSelect={handleSelect} />
             </label>
             <br />
             <label>

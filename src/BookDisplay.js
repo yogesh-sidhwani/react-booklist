@@ -77,7 +77,7 @@ function BookDisplay({ cart, setCart }) {
 
   return (
     <div>
-      <h2>Books</h2>
+      <h2 className="book-heading">Books</h2>
       <TextField
         label="Search books by title"
         variant="outlined"
