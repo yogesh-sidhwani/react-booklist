@@ -12,16 +12,19 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+  input[type="tel"],
+  input[type="email"] {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
   font-size: 16px;
+  width: 200px;
 }
 
-button[type="submit"] {
-  padding: 8px 16px;
-  background-color: #007bff;
+button[type="submit"], input[type="submit"] {
+  padding: 5px 10px;
+  background-color: #dc3545;
   color: white;
   border: none;
   border-radius: 3px;
@@ -30,5 +33,19 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #0069d9;
+  background-color: #dc3545;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.span-link {
+  color: #dc3545;
+  cursor: pointer;
+}
+
+.error-message{
+  color: #dc3545;
+  font-size: 12px;
 }

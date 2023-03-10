@@ -4,6 +4,7 @@ import "./Cart.css";
 
 function Cart({ cart, setCart }) {
   const [redirectToBookDisplay, setRedirectToBookDisplay] = useState(false);
+  const [total, setTotal] = useState(false);
 
   function handleRemoveFromCart(bookToRemove) {
     const cartValue = cart.filter((book) => book.id !== bookToRemove.id);
@@ -11,6 +12,10 @@ function Cart({ cart, setCart }) {
   }
 
   useEffect(() => {
+    let sum = cart.reduce((total, currentValue) => {
+      return total + currentValue.price;
+    }, 0);
+    setTotal(sum);
     if (cart.length === 0) {
       setRedirectToBookDisplay(true);
     }
@@ -19,21 +24,34 @@ function Cart({ cart, setCart }) {
   if (redirectToBookDisplay) {
     return <Redirect to="/books" />;
   }
-let total = 0;
+
   return (
     <div>
       <h2>Cart</h2>
       <ul>
         {cart.map((book) => (
-         
           <li key={book.id}>
             {book.bookName} by {book.authorName}
+            <span>
+              {book.price.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}
+            </span>
             <button onClick={() => handleRemoveFromCart(book)}>
               Remove from cart
             </button>
           </li>
         ))}
       </ul>
+      <p className="total">
+        {" "}
+        Total:{" "}
+        {total.toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        })}{" "}
+      </p>
     </div>
   );
 }

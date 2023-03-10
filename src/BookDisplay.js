@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import {
   Table,
   TableBody,
@@ -19,19 +19,10 @@ function BookDisplay({ cart, setCart }) {
   const history = useHistory();
 
   useEffect(() => {
-    // Replace the url by get all API
-
     fetch("http://localhost:8080/book/getAllBooks/1")
       .then((response) => response.json())
       .then((data) => setBooks(data))
       .catch((error) => console.log(error));
-   //   axios.get("http://localhost:7070/book/getAllTheBooks")
-      // .then((res)=>{
-      //   console.log(res)
-      // }).error((err)=>{
-      //   console.log(err)
-      // })
-
 
     // remove the mock data
     // const books = [
@@ -71,8 +62,8 @@ function BookDisplay({ cart, setCart }) {
   );
 
   function handleAddToCart(book) {
-    if(!cart.filter((cartBook) => book.id === cartBook.id).length > 0) {
-        setCart([...cart, book]);   
+    if (!cart.filter((cartBook) => book.id === cartBook.id).length > 0) {
+      setCart([...cart, book]);
     }
   }
 
@@ -115,12 +106,33 @@ function BookDisplay({ cart, setCart }) {
               <TableCell>{book.id}</TableCell>
               <TableCell>{book.bookName}</TableCell>
               <TableCell>{book.authorName}</TableCell>
-              <TableCell>{book.price}</TableCell>
               <TableCell>
-                <button disabled={cart.filter((cartBook) => book.id === cartBook.id).length > 0} onClick={() => handleAddToCart(book)}>Add</button>
+                {book.price.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                })}
               </TableCell>
               <TableCell>
-                <button disabled={!cart.filter((cartBook) => book.id === cartBook.id).length > 0} onClick={() => removeFromCart(book)}>Remove</button>
+                <button
+                  disabled={
+                    cart.filter((cartBook) => book.id === cartBook.id).length >
+                    0
+                  }
+                  onClick={() => handleAddToCart(book)}
+                >
+                  Add
+                </button>
+              </TableCell>
+              <TableCell>
+                <button
+                  disabled={
+                    !cart.filter((cartBook) => book.id === cartBook.id).length >
+                    0
+                  }
+                  onClick={() => removeFromCart(book)}
+                >
+                  Remove
+                </button>
               </TableCell>
             </TableRow>
           ))}
